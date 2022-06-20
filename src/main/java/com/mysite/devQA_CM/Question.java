@@ -1,8 +1,14 @@
 package com.mysite.devQA_CM;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
+@Getter
+@Setter
 @Entity
 public class Question {
 	@Id // 데이터베이스에 저장할 때 동일한 값으로 저장할 수 없다.
@@ -17,4 +23,7 @@ public class Question {
 	private String content;
 
 	private LocalDateTime createDate;
+
+	@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE) // 질문을 삭제하면 그에 달린 답변들도 모두 삭제.
+	private List<Answer> answerList;
 }

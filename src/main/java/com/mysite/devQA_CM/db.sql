@@ -8,3 +8,10 @@ CREATE TABLE question(
     content TEXT NOT NULL,
     create_date DATETIME NOT NULL
 );
+
+CREATE TABLE answer(
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    content TEXT NOT NULL,
+    create_date DATETIME NOT NULL,
+    question_id BIGINT UNSIGNED NOT NULL
+);
