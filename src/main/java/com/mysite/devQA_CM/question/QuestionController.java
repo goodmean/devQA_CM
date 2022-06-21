@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+@RequestMapping("/question")
 @RequiredArgsConstructor
 @Controller
 public class QuestionController {
 
 	private final QuestionService questionService;
 
-	@RequestMapping("/question/list")
+	@RequestMapping("/list")
 	public String list(Model model) {
 		List<Question> questionList = this.questionService.getList();
 		model.addAttribute("questionList", questionList); // Model 객체에 "questionList" 라는 이름으로 저장
@@ -22,7 +23,7 @@ public class QuestionController {
 		return "question_list";
 	}
 
-	@RequestMapping(value = "/question/detail/{id}")
+	@RequestMapping(value = "/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Integer id) {
 		Question question = this.questionService.getQuestion(id);
 		model.addAttribute("question", question);
