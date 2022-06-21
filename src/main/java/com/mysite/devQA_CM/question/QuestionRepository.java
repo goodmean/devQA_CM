@@ -1,4 +1,4 @@
-package com.mysite.devQA_CM;
+package com.mysite.devQA_CM.question;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

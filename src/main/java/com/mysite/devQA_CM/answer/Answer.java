@@ -1,5 +1,6 @@
-package com.mysite.devQA_CM;
+package com.mysite.devQA_CM.answer;
 
+import com.mysite.devQA_CM.question.Question;
 import lombok.Getter;
 import lombok.Setter;
 

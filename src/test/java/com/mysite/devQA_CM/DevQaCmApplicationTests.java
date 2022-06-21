@@ -1,5 +1,9 @@
 package com.mysite.devQA_CM;
 
+import com.mysite.devQA_CM.answer.Answer;
+import com.mysite.devQA_CM.answer.AnswerRepository;
+import com.mysite.devQA_CM.question.Question;
+import com.mysite.devQA_CM.question.QuestionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
