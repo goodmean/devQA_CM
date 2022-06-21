@@ -1,4 +1,4 @@
-# 프로젝트 주제 : 인테리어 커뮤니티
+# 프로젝트 주제 : 개발자 Q&A 커뮤니티
 
 # 시작 일자 : 2022.06.19 ~
 - [git](https://github.com/goodmean/devQA_CM)
