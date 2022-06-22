@@ -1,5 +1,6 @@
 package com.mysite.devQA_CM.question;
 
+import com.mysite.devQA_CM.answer.AnswerForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,7 @@ public class QuestionController {
 	}
 
 	@RequestMapping(value = "/detail/{id}")
-	public String detail(Model model, @PathVariable("id") Integer id) {
+	public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
 		Question question = this.questionService.getQuestion(id);
 		model.addAttribute("question", question);
 		return "question_detail";
