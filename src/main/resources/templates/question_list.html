@@ -10,7 +10,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="question, loop : ${questionList}"> <!-- questionList에 저장된 데이터를 하나씩 꺼내 question 객체에 대입 자바의 for each. -->
+        <tr th:each="question, loop : ${paging}"> <!-- questionList에 저장된 데이터를 하나씩 꺼내 question 객체에 대입 자바의 for each. -->
             <td th:text="${loop.count}"></td>
             <td>
                 <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
