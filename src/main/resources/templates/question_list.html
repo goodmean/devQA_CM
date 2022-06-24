@@ -10,8 +10,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="question, loop : ${paging}"> <!-- questionList에 저장된 데이터를 하나씩 꺼내 question 객체에 대입 자바의 for each. -->
-            <td th:text="${loop.count}"></td>
+        <tr th:each="question, loop : ${paging}"> <!-- paging 에 저장된 데이터를 하나씩 꺼내 question 객체에 대입 자바의 for each. -->
+            <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
+            <!-- 번호 = 전체 게시물 개수 - (현재 페이지 * 페이지당 게시물 개수) - 나열 인덱스 -->
             <td>
                 <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
             </td>
