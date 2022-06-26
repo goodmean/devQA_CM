@@ -23,7 +23,9 @@
             <label for="email" class="form-label">이메일</label>
             <input type="email" th:field="*{email}" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">회원가입</button>
+        <button type="submit" class="btn btn-primary" style="float:right">회원가입</button>
+        <a th:href="@{/}" class="btn btn-secondary mx-2" style="float:right">취소</a>
+
     </form>
 </div>
 </html>
