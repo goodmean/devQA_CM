@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @RequiredArgsConstructor
 @Configuration
@@ -21,10 +22,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/**").permitAll() // 모든 인증되지 않은 요청
-				.and()
+				.and() // 로그인
 					.formLogin()
 					.loginPage("/user/login")
 					.defaultSuccessUrl("/")
+				.and() // 로그아웃
+					.logout()
+					.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+					.logoutSuccessUrl("/")
+					.invalidateHttpSession(true)
 		;
 	}
 
