@@ -41,5 +41,31 @@ SET create_date = NOW(),
 question_id = 2,
 content = '따로 생성할 필요가 없습니다.';
 
+# 유저 테이블 생성
+CREATE TABLE site_user (
+  id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  username CHAR(100) NOT NULL UNIQUE,
+  `password` CHAR(100) NOT NULL,
+  email CHAR(100) NOT NULL UNIQUE
+);
+
+# 테스트용 사용자 3명 생성(1명은 관리자)
+# 비밀번호 : sbs1234 => bcrypt 적용
+INSERT INTO site_user
+SET username = 'admin',
+`password` = '$2a$10$ECLIahn9UgeZxUxmca6HyeYTwOAspolhesV1qXFQNF5zyR20FfmB6',
+email = 'admin@test.com';
+
+INSERT INTO site_user
+SET username = 'user1',
+`password` = '$2a$10$ECLIahn9UgeZxUxmca6HyeYTwOAspolhesV1qXFQNF5zyR20FfmB6',
+email = 'user1@test.com';
+
+INSERT INTO site_user
+SET username = 'user2',
+`password` = '$2a$10$ECLIahn9UgeZxUxmca6HyeYTwOAspolhesV1qXFQNF5zyR20FfmB6',
+email = 'user2@test.com';
+
 SELECT * FROM question;
 SELECT * FROM answer;
+SELECT * FROM site_user;

@@ -1,6 +1,7 @@
 package com.mysite.devQA_CM.question;
 
 import com.mysite.devQA_CM.answer.Answer;
+import com.mysite.devQA_CM.user.SiteUser;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,4 +28,7 @@ public class Question {
 
 	@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE) // 질문을 삭제하면 그에 달린 답변들도 모두 삭제.
 	private List<Answer> answerList;
+
+	@ManyToOne // 여러개의 질문이 한 사용자에게 작성될 수 있다.
+	private SiteUser author;
 }

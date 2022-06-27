@@ -1,6 +1,7 @@
 package com.mysite.devQA_CM.answer;
 
 import com.mysite.devQA_CM.question.Question;
+import com.mysite.devQA_CM.user.SiteUser;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +24,6 @@ public class Answer {
 	@ManyToOne // 답변은 하나의 질문에 여러개가 달릴 수 있는 구조
 	private Question question;
 
+	@ManyToOne
+	private SiteUser author;
 }
