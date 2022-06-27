@@ -31,7 +31,8 @@
     <!-- 답변 작성 폼 -->
     <form th:action="@{|/answer/create/${question.id}|}" th:object="${answerForm}" method="post" class="my-3">
         <div th:replace="form_errors :: formErrorsFragment"></div>
-        <textarea th:field="*{content}" rows="10" class="form-control"></textarea>
+        <textarea sec:authorize="isAnonymous()" disabled th:field="*{content}" rows="10" class="form-control"></textarea>
+        <textarea sec:authorize="isAuthenticated()" th:field="*{content}" rows="10" class="form-control"></textarea>
         <a th:href="@{/}" class="btn btn-secondary my-2">목록으로</a>
         <input type="submit" value="답변등록" class="btn btn-primary my-2" style="float:right">
     </form>
