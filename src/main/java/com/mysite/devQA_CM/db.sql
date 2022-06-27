@@ -70,14 +70,17 @@ email = 'user2@test.com';
 ALTER TABLE question
 ADD COLUMN author_id BIGINT UNSIGNED NOT NULL;
 
-# 기존 질문을 특정 사용자와 연결짓기
+# 기존 질문 작성자를 1번 회원으로.
 UPDATE question
-JOIN site_user
-SET question.author_id = site_user.id;
+SET author_id = 1;
 
 # 답변 테이블에 site_user_id 칼럼 추가
 ALTER TABLE answer
 ADD COLUMN author_id BIGINT UNSIGNED NOT NULL;
+
+# 기존 답변 작성자를 1번 회원으로.
+UPDATE answer
+SET author_id = 1;
 
 SELECT * FROM question;
 SELECT * FROM answer;
