@@ -66,6 +66,19 @@ SET username = 'user2',
 `password` = '$2a$10$ECLIahn9UgeZxUxmca6HyeYTwOAspolhesV1qXFQNF5zyR20FfmB6',
 email = 'user2@test.com';
 
+# 질문 테이블에 author_id 칼럼 추가
+ALTER TABLE question
+ADD COLUMN author_id BIGINT UNSIGNED NOT NULL;
+
+# 기존 질문을 특정 사용자와 연결짓기
+UPDATE question
+JOIN site_user
+SET question.author_id = site_user.id;
+
+# 답변 테이블에 site_user_id 칼럼 추가
+ALTER TABLE answer
+ADD COLUMN author_id BIGINT UNSIGNED NOT NULL;
+
 SELECT * FROM question;
 SELECT * FROM answer;
 SELECT * FROM site_user;
