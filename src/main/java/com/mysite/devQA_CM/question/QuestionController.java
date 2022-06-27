@@ -1,6 +1,8 @@
 package com.mysite.devQA_CM.question;
 
 import com.mysite.devQA_CM.answer.AnswerForm;
+import com.mysite.devQA_CM.user.SiteUser;
+import com.mysite.devQA_CM.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RequestMapping("/question")
 @RequiredArgsConstructor
@@ -16,6 +19,7 @@ import javax.validation.Valid;
 public class QuestionController {
 
 	private final QuestionService questionService;
+	private final UserService userService;
 
 	@RequestMapping("/list")
 	public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
@@ -38,13 +42,14 @@ public class QuestionController {
 	}
 	
 	@PostMapping("/create")
-	public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult) {
+	public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult, Principal principal) {
 
 		if(bindingResult.hasErrors()) {
 			return "question_form";
 		}
 
-		this.questionService.create(questionForm.getSubject(), questionForm.getContent());
+		SiteUser siteUser = this.userService.getUser(principal.getName());
+		this.questionService.create(questionForm.getSubject(), questionForm.getContent(), siteUser);
 		return "redirect:/question/list"; // 질문 저장 후 질문목록으로 이동
 	}
 }

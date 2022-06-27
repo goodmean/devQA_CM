@@ -5,6 +5,8 @@ import com.mysite.devQA_CM.answer.AnswerRepository;
 import com.mysite.devQA_CM.question.Question;
 import com.mysite.devQA_CM.question.QuestionRepository;
 import com.mysite.devQA_CM.question.QuestionService;
+import com.mysite.devQA_CM.user.SiteUser;
+import com.mysite.devQA_CM.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +30,9 @@ class DevQaCmApplicationTests {
 
 	@Autowired
 	private QuestionService questionService;
+
+	@Autowired
+	private UserService userService;
 
 	@Test
 	void saveQuestion() {
@@ -137,10 +142,12 @@ class DevQaCmApplicationTests {
 
 	@Test
 	void testCase() {
+		SiteUser author = userService.getUser(null);
+
 		for (int i = 1; i <= 300; i++) {
 			String subject = String.format("테스트 데이터입니다:[%03d]", i);
 			String content = "내용무";
-			this.questionService.create(subject, content);
+			this.questionService.create(subject, content, author);
 		}
 	}
 }
