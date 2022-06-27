@@ -14,6 +14,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/**").permitAll() // 모든 인증되지 않은 요청
+				.and()
+					.formLogin()
+					.loginPage("/user/login")
+					.defaultSuccessUrl("/")
 		;
 	}
 
