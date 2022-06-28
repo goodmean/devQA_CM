@@ -14,8 +14,8 @@
         <tr class="text-center" th:each="question, loop : ${paging}"> <!-- paging 에 저장된 데이터를 하나씩 꺼내 question 객체에 대입 자바의 for each. -->
             <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
             <!-- 번호 = 전체 게시물 개수 - (현재 페이지 * 페이지당 게시물 개수) - 나열 인덱스 -->
-            <td class="text-start" style="width:50%">
-                <a class="d-inline-block text-truncate" th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}" style="max-width:700px; vertical-align:-9px"></a>
+            <td class="text-start">
+                <a class="d-inline-block text-truncate" th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}" style="max-width:400px; vertical-align:-9px"></a>
                 <span class="text-danger ms-3 small"
                       th:if="${#lists.size(question.answerList) > 0}"
                       th:text=" '[ ' + ${#lists.size(question.answerList)} + ' ]' ">
