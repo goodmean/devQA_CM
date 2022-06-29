@@ -82,6 +82,14 @@ ADD COLUMN author_id BIGINT UNSIGNED NOT NULL;
 UPDATE answer
 SET author_id = 1;
 
+# 질문 테이블에 수정일시 칼럼 추가
+ALTER TABLE question
+ADD COLUMN modify_date DATETIME;
+
+# 답변 테이블에 수정일시 칼럼 추가
+ALTER TABLE answer
+ADD COLUMN modify_date DATETIME;
+
 SELECT * FROM question;
 SELECT * FROM answer;
 SELECT * FROM site_user;
