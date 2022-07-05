@@ -25,7 +25,8 @@ public class QuestionController {
 	private final UserService userService;
 
 	@RequestMapping("/list")
-	public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "kw", defaultValue = "") String kw) {
+	public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
+	                   @RequestParam(value = "kw", defaultValue = "") String kw) {
 		Page<Question> paging = this.questionService.getList(page, kw);
 		model.addAttribute("paging", paging); // Model 객체에 "paging" 이라는 이름으로 저장
 		// Model 객체에 값을 담아두면 템플릿에서 그 값을 사용할 수 있다.
