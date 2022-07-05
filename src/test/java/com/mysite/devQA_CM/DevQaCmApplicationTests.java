@@ -150,4 +150,14 @@ class DevQaCmApplicationTests {
 			questionService.create(subject, content, author);
 		}
 	}
+
+	@Test
+	void testMakeAnswerMany() {
+		SiteUser author = questionService.getQuestion(1);
+
+		for (int i = 1; i <= 300; i++) {
+			String content = "내용무 : %d".formatted((int) (Math.random() * 100));
+			questionService.create(content, author);
+		}
+	}
 }
