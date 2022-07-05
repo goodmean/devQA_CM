@@ -22,14 +22,21 @@
 - Question(질문)
 	- list(리스트)
     - detail(상세내용)
-	- create(등록)
-    - modify(수정)
+	- create(등록, 등록일표시)
+    - modify(수정, 수정일표시)
     - delete(삭제)
     - search(검색)
+    - vote(추천)
+    - author(작성자표시)
     
 - Answer (답변)
-	- create(등록)
-    - modify(수정)
+	- create(등록, 등록일표시)
+    - modify(수정, 수정일표시)
     - delete(삭제)
+    - vote(추천)
+    - author(작성자표시)
     
-- 리스팅/추천/검색
+- 리스팅/페이징
+- 앵커
+- 마크다운
+- 검색
