@@ -2,6 +2,7 @@ package com.mysite.devQA_CM;
 
 import com.mysite.devQA_CM.answer.Answer;
 import com.mysite.devQA_CM.answer.AnswerRepository;
+import com.mysite.devQA_CM.answer.AnswerService;
 import com.mysite.devQA_CM.question.Question;
 import com.mysite.devQA_CM.question.QuestionRepository;
 import com.mysite.devQA_CM.question.QuestionService;
@@ -33,6 +34,9 @@ class DevQaCmApplicationTests {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private AnswerService answerService;
 
 	@Test
 	void saveQuestion() {
@@ -153,11 +157,12 @@ class DevQaCmApplicationTests {
 
 	@Test
 	void testMakeAnswerMany() {
-		SiteUser author = questionService.getQuestion(1);
+		Question question = questionService.getQuestion(1);
+		SiteUser author = userService.getUser("admin");
 
 		for (int i = 1; i <= 300; i++) {
 			String content = "내용무 : %d".formatted((int) (Math.random() * 100));
-			questionService.create(content, author);
+			answerService.create(question, content, author);
 		}
 	}
 }
