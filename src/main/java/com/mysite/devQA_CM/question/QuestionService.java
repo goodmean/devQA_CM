@@ -46,8 +46,7 @@ public class QuestionService {
 		List<Sort.Order> sorts = new ArrayList<>();
 		sorts.add(Sort.Order.desc("createDate"));
 		Pageable pageable = PageRequest.of(page,15, Sort.by(sorts)); // size : 한 페이지에 나타나는 목록 수
-		Specification<Question> spec = search(kw);
-		return this.questionRepository.findAll(spec, pageable);
+		return this.questionRepository.findAllByKeyword(kw, pageable);
 	}
 
 	public Question getQuestion(Integer id) {
